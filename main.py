@@ -2,7 +2,7 @@
 
 import os
 from flask import Flask, render_template
-
+from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired, URL
@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
-
+Bootstrap(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///cafes.db")
 db = SQLAlchemy(app)
 wifi = ["✘","💪","💪💪","💪💪💪","💪💪💪💪","💪💪💪💪💪"]
