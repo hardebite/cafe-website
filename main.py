@@ -9,12 +9,14 @@ from wtforms.validators import DataRequired, URL
 import csv
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
-
+from sqlalchemy.ext.declarative import declarative_base
 
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 Bootstrap(app)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///cafes.db")
 db = SQLAlchemy(app)
+Base = declarative_base()
 wifi = ["✘","💪","💪💪","💪💪💪","💪💪💪💪","💪💪💪💪💪"]
 coffee = ["✘","☕","☕☕","☕☕☕","☕☕☕☕","☕☕☕☕☕"]
 power=["✘","🔌","🔌🔌","🔌🔌🔌","🔌🔌🔌🔌","🔌🔌🔌🔌"]
