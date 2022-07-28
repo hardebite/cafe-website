@@ -42,6 +42,7 @@ class CafeForm(FlaskForm):
     power= SelectField(label='Power',choices=power ,validators=[DataRequired()])
     submit = SubmitField('Submit')
 db.create_all()
+
 db.session.commit()
 
 
