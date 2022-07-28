@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+<div class="front"  style="background-image:url(static/photo-1501339847302-ac426a4a7cbb.jpeg)">
+
+        </div>
+        <div  class="name">
+            <h2>A list of cafes in London </h2>
+
+            {% for cafe in cafes: %}
+
+            <table class="info" >
+
+
+                <tr >
+                    <td><img  class="pic" src="{{ cafe.img_url}} "></td>
+                    <td>
+                        <div class="info2">
+                        <h2 >{{cafe.name}}</h2>
+                    {% if cafe.has_sockets == 1:  %}
+                        <p><p >sockets are available😀</p>
+                    {% else: %}
+                    <p >sockets  are not available 😔</p>
+                    {% endif %}
+                    {% if cafe.has_toilets == 1:  %}
+                        <p><p >restrooms are readily available 😀</p>
+                    {% else: %}
+                    <p >restrooms are sadly not available 😔</p>
+                    {% endif %}
+                    {% if cafe.has_wifi == 1:  %}
+                        <p><p >internet is available😀</p>
+                    {% else: %}
+                    <p >no wifi😔</p>
+                    {% endif %}
+                    {% if cafe.seats == "50+":  %}
+                        <p><p >got a big space</p>
+                    {% else: %}
+                    <p > a small cafe</p>
+                    {% endif %}
+                    <p><a href="{{ cafe.map_url}}" >{{ cafe.location }}</a></p>
+                    <p >Price for a cup of coffee: {{ cafe.coffee_price }}</p>
+                    </div>
+                    </td>
+                </tr>
+
+
+
+
+
+                </table>
+    {% endfor%}
+     </div>
+
+</body>
+</html>
