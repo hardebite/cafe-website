@@ -8,9 +8,6 @@ from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired, URL
 import csv
 from flask_sqlalchemy import SQLAlchemy
-#
-# TEMPLATE_DIR = os.path.abspath('../templates')
-# STATIC_DIR = os.path.abspath('../static')
 app = Flask(__name__)
 
 
@@ -44,33 +41,12 @@ class CafeForm(FlaskForm):
     power= SelectField(label='Power',choices=power ,validators=[DataRequired()])
     submit = SubmitField('Submit')
 db.session.commit()
-# all Flask routes below
-# @app.route("/")
-# def home():
-#     return render_template("index.html")
 
-
-# @app.route('/add',methods=["POST" ,"GET"])
-# def add_cafe():
-#     form = CafeForm()
-#     if form.validate_on_submit():
-#         with open('cafe-data.csv', mode="a") as file:
-#             csv_data = file.write(f"\n{form.cafe.data},{form.location.data},{form.open.data},{form.close.data},{form.coffee.data},{form.Wifi.data},{form.power.data}")
-#
-#         print("True")
-#     # Exercise:
-#     # Make the form write a new row into cafe-data.csv
-#     # with   if form.validate_on_submit()
-#     return render_template('add.html', form=form)
 
 
 @app.route('/')
 def cafes():
-    # with open('cafe-data.csv', newline='') as csv_file:
-    #     csv_data = csv.reader(csv_file, delimiter=',')
-    #     list_of_rows = []
-    #     for row in csv_data:
-    #         list_of_rows.append(row)
+   
     cafe =Cafe.query.all()
     for i in cafe:
         print(i.name)
