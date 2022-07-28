@@ -1,6 +1,6 @@
 
 
-
+import os
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
@@ -11,9 +11,9 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 Bootstrap(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///cafes.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///cafes.db")
 db = SQLAlchemy(app)
 wifi = ["✘","💪","💪💪","💪💪💪","💪💪💪💪","💪💪💪💪💪"]
 coffee = ["✘","☕","☕☕","☕☕☕","☕☕☕☕","☕☕☕☕☕"]
